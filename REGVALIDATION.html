@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 50px;
+        }
+
+        .form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-page">
+    <div class="form">
+        <h1>Registration-form</h1>
+        <form class="login-form" onsubmit="return validateForm()">
+            <input type="text" id="username" placeholder="username"/>
+            <input type="number" id="age" placeholder="Age"/>
+            <input type="text" id="gender" placeholder="Gender"/>
+            <input type="text" id="address" placeholder="Address"/>
+            <input type="password" id="password" placeholder="password"/>
+            <input type="password" id="confirm-password" placeholder="confirm-password"/>
+            <button type="submit">Register</button>
+            <p class="message">already have an account? <a href="index.html">Login</a></p>
+            <p class="message">wanna check my cv? <a href="cv.html">click here</a></p>
+        </form>
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+        var username = document.getElementById('username').value;
+        var age = document.getElementById('age').value;
+        var gender = document.getElementById('gender').value;
+        var address = document.getElementById('address').value;
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirm-password').value;
+
+        // Regular expressions for basic validation
+        var usernameRegex = /^[a-zA-Z0-9_-]{3,16}$/;
+        var ageRegex = /^[0-9]+$/;
+        var genderRegex = /^[a-zA-Z]+$/;
+        var addressRegex = /^[a-zA-Z0-9\s,.'-]{3,}$/;
+        var passwordRegex = /^.{6,}$/;
+
+        if (!usernameRegex.test(username) || !ageRegex.test(age) || !genderRegex.test(gender) || !addressRegex.test(address) || !passwordRegex.test(password) || password !== confirmPassword) {
+            alert('Please enter valid information.');
+            return false;
+        }
+
+        // Additional validation logic can be added here
+
+        return true;
+    }
+</script>
+
+</body>
+</html>
